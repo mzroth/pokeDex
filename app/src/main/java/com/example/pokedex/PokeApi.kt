@@ -11,6 +11,9 @@ interface PokeApi {
     @GET("pokemon")
     fun getAllPokemon(@Query("limit") limit: String): Call<AllPokemon>
 
+    @GET("pokemon/{id}")
+    fun getSinglePokemon(@Path("id") id: String): Call<Pokemon>
+
     companion object {
         fun create(): PokeApi {
             val retrofit = Retrofit.Builder()

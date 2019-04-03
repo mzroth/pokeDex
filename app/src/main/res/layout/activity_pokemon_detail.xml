@@ -15,4 +15,11 @@
             android:layout_marginBottom="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"/>
+    <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/poke_image_view" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:contentDescription="@string/poke_image_content_description"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 </android.support.constraint.ConstraintLayout>
