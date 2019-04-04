@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 class VersionDetail {
     @SerializedName("rarity")
     val rarity: Int? = null
-    val version: List<NameUrl>? = null
+    val version: NameUrl? = null
 }

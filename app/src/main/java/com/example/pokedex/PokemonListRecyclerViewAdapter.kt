@@ -20,7 +20,7 @@ class PokemonListRecyclerViewAdapter(private var list: List<NameUrl>, private va
 
     override fun onBindViewHolder(holder: PokemonListRecyclerViewHolder, position: Int) {
         holder.pokemonListIdView.text = (position + 1).toString()
-        holder.pokemonListNameView.text = list[position].name
+        holder.pokemonListNameView.text = list[position].name?.capitalize()
         holder.itemView.setOnClickListener { clickListener.pokemonClicked(position + 1) }
     }
 
