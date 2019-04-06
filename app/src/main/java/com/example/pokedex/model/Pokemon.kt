@@ -1,7 +1,9 @@
-package com.example.pokedex
+package com.example.pokedex.model
 
 import com.google.gson.annotations.SerializedName
 
+//I kept all information from the API call on a single pokemon so that I could customize more later. Many of these
+//also have subclasses.
 class Pokemon {
     @SerializedName("abilities")
     val abilities: List<Ability>? = null
