@@ -13,7 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 //Conversion factor for height and weight that are measures in decameters and decagrams
-private const val conversionFactor = 10
+private const val CONVERSION_FACTOR = 10
 
 class PokemonDetail : AppCompatActivity() {
 
@@ -21,18 +21,21 @@ class PokemonDetail : AppCompatActivity() {
     private val somethingWrongUrl = "https://i.redd.it/2urjp7yzl1z01.png"
     private val noImageUrl = "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png"
     private var pokemonNumber = 0
-    lateinit var pokeService: PokeApi
+    private val pokeService = PokeApi.create()
     private var pokemon: Pokemon? = null
     private var pokemonDisplayNumber: String = ""
+
+//    Intent Key
+    companion object {
+        const val INTENT_POKEMON_KEY = "pokemonNumber"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_detail)
 
-        pokemonNumber = intent.getIntExtra(MainActivity.INTENT_POKEMON_KEY, 1)
+        pokemonNumber = intent.getIntExtra(INTENT_POKEMON_KEY, 1)
         pokemonDisplayNumber = pokemonNumber.toString()
-
-        pokeService = PokeApi.create()
 
 //        Making the asynchronous request to the API
         pokeService.getSinglePokemon(pokemonNumber.toString()).enqueue(object: Callback<Pokemon> {
@@ -78,12 +81,12 @@ class PokemonDetail : AppCompatActivity() {
 
 //    Converts height to meters from decameters
     private fun setHeight() {
-        height_text_view.text = getString(R.string.height, ((pokemon?.height ?: 0).toFloat()/conversionFactor).toString())
+        height_text_view.text = getString(R.string.height, ((pokemon?.height ?: 0).toFloat()/CONVERSION_FACTOR).toString())
     }
 
 //    Converts weight to kilograms from decagrams
     private fun setWeight() {
-        weight_text_view.text = getString(R.string.weight, ((pokemon?.weight ?: 0).toFloat()/conversionFactor).toString())
+        weight_text_view.text = getString(R.string.weight, ((pokemon?.weight ?: 0).toFloat()/CONVERSION_FACTOR).toString())
     }
 
 //    This set's the pokemon's types in the correct order.
